@@ -6,15 +6,22 @@ export default function robots(): MetadataRoute.Robots {
     rules: [
       {
         userAgent: '*',
-        allow: '/',
-        disallow: ['/api/', '/admin/', '/_next/'],
+        allow: ['/', '/projects/', '/about', '/contact'],
+        disallow: ['/api/', '/admin/', '/_next/', '/private/'],
       },
       {
         userAgent: 'Googlebot',
         allow: '/',
-        disallow: ['/api/', '/admin/'],
+        disallow: ['/api/', '/admin/', '/private/'],
+      },
+      {
+        userAgent: 'Bingbot',
+        allow: '/',
+        disallow: ['/api/', '/admin/', '/private/'],
+        crawlDelay: 2,
       },
     ],
     sitemap: `${personalInfo.siteUrl}/sitemap.xml`,
+    host: personalInfo.siteUrl,
   };
 }
