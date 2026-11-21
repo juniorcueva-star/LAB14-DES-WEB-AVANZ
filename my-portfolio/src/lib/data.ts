@@ -73,6 +73,102 @@ export const projects: Project[] = [
     year: '2025',
     category: 'Frontend',
   },
+  {
+    slug: 'medicita',
+    title: 'MediCita',
+    description: 'Sistema web de citas médicas para clínicas con historia clínica digital',
+    longDescription:
+      'Plataforma para clínicas donde los pacientes reservan citas según la disponibilidad de cada especialista, reciben recordatorios por correo y consultan sus resultados. Los médicos gestionan su agenda y la historia clínica digital, y el administrador ve reportes de atención. Frontend en React consumiendo una API REST en Spring Boot con autenticación JWT por roles y base de datos PostgreSQL.',
+    image: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?q=80&w=1200&auto=format&fit=crop',
+    technologies: ['React', 'TypeScript', 'Spring Boot', 'Spring Security', 'JWT', 'PostgreSQL'],
+    featured: false,
+    year: '2026',
+    category: 'Full Stack Web',
+  },
+  {
+    slug: 'farmaya',
+    title: 'FarmaYa',
+    description: 'App móvil de farmacia con pedidos a domicilio y receta digital',
+    longDescription:
+      'Aplicación móvil para comprar medicamentos y productos de farmacia con entrega a domicilio. El cliente busca productos, sube la foto de su receta para validarla, paga y sigue el estado del pedido. Incluye un panel web para que la farmacia gestione stock y pedidos. App en Flutter, API en Node.js con Express y base de datos MongoDB.',
+    image: 'https://images.unsplash.com/photo-1587854692152-cbe660dbde88?q=80&w=1200&auto=format&fit=crop',
+    technologies: ['Flutter', 'Dart', 'Node.js', 'Express', 'MongoDB', 'JWT'],
+    featured: false,
+    year: '2026',
+    category: 'Full Stack Móvil',
+  },
+  {
+    slug: 'gympro',
+    title: 'GymPro',
+    description: 'App móvil para socios de gimnasio con panel web de administración',
+    longDescription:
+      'Solución completa para gimnasios: los socios usan la app para ver sus rutinas, reservar clases grupales y marcar asistencia con código QR. El gimnasio administra membresías, pagos, entrenadores y horarios desde un panel web. App en Flutter, panel en React, API REST en Spring Boot y base de datos MySQL.',
+    image: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=1200&auto=format&fit=crop',
+    technologies: ['Flutter', 'React', 'Spring Boot', 'MySQL', 'Docker'],
+    featured: false,
+    year: '2026',
+    category: 'Full Stack Móvil',
+  },
+  {
+    slug: 'eventhub',
+    title: 'EventHub',
+    description: 'Plataforma web de venta de entradas para conciertos y eventos',
+    longDescription:
+      'Sitio para publicar eventos y vender entradas en línea con selección de zona, pago y entrada digital con código QR que se valida en la puerta. Los organizadores ven ventas y aforo en tiempo real. Frontend en Next.js con renderizado en el servidor para un SEO excelente, API en Node.js con Express y base de datos PostgreSQL.',
+    image: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=1200&auto=format&fit=crop',
+    technologies: ['Next.js', 'TypeScript', 'Node.js', 'Express', 'PostgreSQL', 'Tailwind CSS'],
+    featured: false,
+    year: '2025',
+    category: 'Full Stack Web',
+  },
+  {
+    slug: 'viajape',
+    title: 'ViajaPe',
+    description: 'App móvil para reservar tours y paquetes turísticos en el Perú',
+    longDescription:
+      'Aplicación para descubrir y reservar tours por todo el Perú: filtros por destino, fecha y presupuesto, galería de fotos, reseñas de viajeros y pago en la app. Las agencias publican y gestionan sus paquetes desde su propio panel. App en Flutter, API REST en Spring Boot y base de datos PostgreSQL.',
+    image: 'https://images.unsplash.com/photo-1488646953014-85cb44e25828?q=80&w=1200&auto=format&fit=crop',
+    technologies: ['Flutter', 'Dart', 'Spring Boot', 'PostgreSQL', 'Google Maps API'],
+    featured: false,
+    year: '2025',
+    category: 'Full Stack Móvil',
+  },
+  {
+    slug: 'obracontrol',
+    title: 'ObraControl',
+    description: 'Sistema web para gestionar obras de construcción, materiales y avance',
+    longDescription:
+      'Herramienta para constructoras que centraliza el control de cada obra: cronograma de actividades, requerimiento y salida de materiales, personal asignado, presupuesto frente al gasto real y reportes de avance con fotos. Frontend en React, API REST en Spring Boot y base de datos MySQL, desplegado con Docker.',
+    image: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=1200&auto=format&fit=crop',
+    technologies: ['React', 'Spring Boot', 'MySQL', 'Docker', 'Tailwind CSS'],
+    featured: false,
+    year: '2025',
+    category: 'Full Stack Web',
+  },
+  {
+    slug: 'legaldocs',
+    title: 'LegalDocs',
+    description: 'Gestión de expedientes y documentos legales con control de acceso',
+    longDescription:
+      'Sistema web para estudios de abogados: registro de clientes y expedientes, carga de documentos, plazos y audiencias con alertas, y control de acceso por roles para que cada abogado vea solo lo que le corresponde. Toda acción queda en un registro de auditoría. Frontend en Next.js, API en Node.js con Express y base de datos PostgreSQL.',
+    image: 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?q=80&w=1200&auto=format&fit=crop',
+    technologies: ['Next.js', 'Node.js', 'Express', 'PostgreSQL', 'JWT'],
+    featured: false,
+    year: '2025',
+    category: 'Full Stack Web',
+  },
+  {
+    slug: 'pagofacil-pos',
+    title: 'PagoFácil POS',
+    description: 'Punto de venta móvil para pequeños negocios con cobros y reportes',
+    longDescription:
+      'App de punto de venta para bodegas y tiendas pequeñas: catálogo de productos, ventas rápidas con lector de código de barras desde la cámara, varios métodos de pago, cierre de caja diario y reportes de ventas sincronizados con la nube. App en Flutter, API REST en Spring Boot y base de datos PostgreSQL.',
+    image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?q=80&w=1200&auto=format&fit=crop',
+    technologies: ['Flutter', 'Spring Boot', 'PostgreSQL', 'JWT', 'Docker'],
+    featured: false,
+    year: '2025',
+    category: 'Full Stack Móvil',
+  },
 ];
 
 // URL pública del sitio. En Vercel se define NEXT_PUBLIC_SITE_URL con el dominio propio.
