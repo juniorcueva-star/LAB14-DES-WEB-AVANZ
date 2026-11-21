@@ -6,56 +6,56 @@ import { ArrowIcon } from '@/components/Icons';
 
 interface ProjectCardProps {
   project: Project;
+  index?: number;
 }
 
-export default function ProjectCard({ project }: ProjectCardProps) {
+export default function ProjectCard({ project, index }: ProjectCardProps) {
   return (
-    <Spotlight className="h-full rounded-3xl">
+    <Spotlight className="hud h-full rounded-2xl">
       <Link
         href={`/projects/${project.slug}`}
-        className="group glass gradient-border flex h-full flex-col overflow-hidden rounded-3xl transition duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-violet-900/40"
+        className="group panel flex h-full flex-col overflow-hidden rounded-2xl transition duration-500 hover:-translate-y-1.5 hover:border-sky-400/60 hover:shadow-2xl hover:shadow-sky-900/10"
       >
-        <div className="relative m-2 h-52 overflow-hidden rounded-2xl">
+        <div className="relative h-52 overflow-hidden border-b border-line">
           {/* Imágenes con lazy loading */}
           <Image
             src={project.image}
             alt={project.title}
             fill
             loading="lazy"
-            className="object-cover transition-transform duration-700 group-hover:scale-110"
+            className="object-cover grayscale-[35%] transition duration-700 group-hover:scale-105 group-hover:grayscale-0"
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#05060b]/80 via-transparent to-transparent" />
-          {project.category && (
-            <span className="glass absolute top-3 left-3 rounded-full px-3 py-1 text-xs font-medium text-white">
-              {project.category}
+          <div className="absolute inset-0 bg-gradient-to-t from-slate-900/40 to-transparent" />
+          <div className="absolute inset-x-3 top-3 flex items-center justify-between font-mono text-[11px] text-white">
+            <span className="rounded-md bg-slate-900/70 px-2 py-1 backdrop-blur">
+              {index !== undefined ? `P-${String(index + 1).padStart(2, '0')}` : 'PRJ'}
             </span>
-          )}
-          <span className="absolute top-3 right-3 grid h-9 w-9 place-items-center rounded-full bg-white text-zinc-950 opacity-0 transition duration-500 group-hover:rotate-45 group-hover:opacity-100">
-            <ArrowIcon />
-          </span>
+            {project.category && (
+              <span className="rounded-md bg-white/90 px-2 py-1 text-ink">{project.category}</span>
+            )}
+          </div>
         </div>
 
-        <div className="flex flex-1 flex-col p-6 pt-4">
-          <div className="flex items-baseline justify-between gap-3">
-            <h3 className="text-xl font-bold text-white">{project.title}</h3>
-            {project.year && <span className="text-sm text-zinc-500">{project.year}</span>}
+        <div className="flex flex-1 flex-col p-6">
+          <div className="flex items-start justify-between gap-3">
+            <h3 className="text-xl font-bold tracking-tight text-ink">{project.title}</h3>
+            <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full border border-line text-steel transition duration-300 group-hover:rotate-45 group-hover:border-accent group-hover:bg-accent group-hover:text-white">
+              <ArrowIcon />
+            </span>
           </div>
-          <p className="mt-2 line-clamp-2 text-zinc-400">{project.description}</p>
-          <div className="mt-auto flex flex-wrap gap-2 pt-5">
-            {project.technologies.slice(0, 3).map((tech) => (
-              <span
-                key={tech}
-                className="rounded-full bg-white/5 px-3 py-1 text-xs font-medium text-zinc-300 ring-1 ring-white/10"
-              >
+          <p className="mt-2 line-clamp-2 text-steel">{project.description}</p>
+          <div className="mt-auto flex flex-wrap items-center gap-x-3 gap-y-1 border-t border-dashed border-line pt-4 font-mono text-xs text-steel">
+            {project.technologies.slice(0, 3).map((tech, i) => (
+              <span key={tech} className="flex items-center gap-3">
+                {i > 0 && <span className="text-slate-300">/</span>}
                 {tech}
               </span>
             ))}
             {project.technologies.length > 3 && (
-              <span className="rounded-full bg-violet-500/15 px-3 py-1 text-xs font-medium text-violet-200 ring-1 ring-violet-400/20">
-                +{project.technologies.length - 3}
-              </span>
+              <span className="text-accent-ink">+{project.technologies.length - 3}</span>
             )}
+            {project.year && <span className="ml-auto text-slate-400">{project.year}</span>}
           </div>
         </div>
       </Link>

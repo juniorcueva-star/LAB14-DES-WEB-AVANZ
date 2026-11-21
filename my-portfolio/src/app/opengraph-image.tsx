@@ -19,10 +19,11 @@ export default function OpengraphImage() {
           flexDirection: 'column',
           justifyContent: 'space-between',
           padding: 80,
-          background: '#05060b',
+          background: '#eef1f5',
           backgroundImage:
-            'radial-gradient(circle at 15% 20%, rgba(139,92,246,0.55), transparent 45%), radial-gradient(circle at 85% 80%, rgba(34,211,238,0.4), transparent 45%)',
-          color: 'white',
+            'radial-gradient(circle at 80% 10%, rgba(56,189,248,0.35), transparent 45%), linear-gradient(rgba(15,23,42,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(15,23,42,0.06) 1px, transparent 1px)',
+          backgroundSize: '100% 100%, 60px 60px, 60px 60px',
+          color: '#0f172a',
           fontFamily: 'sans-serif',
         }}
       >
@@ -31,18 +32,19 @@ export default function OpengraphImage() {
             style={{
               width: 72,
               height: 72,
-              borderRadius: 20,
+              borderRadius: 14,
+              color: 'white',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
               fontSize: 30,
               fontWeight: 800,
-              background: 'linear-gradient(135deg, #8b5cf6, #22d3ee)',
+              background: '#0f172a',
             }}
           >
             JC
           </div>
-          <div style={{ fontSize: 30, color: '#a1a1aa' }}>{domain}</div>
+          <div style={{ fontSize: 30, color: '#475569' }}>{domain}</div>
         </div>
 
         <div style={{ display: 'flex', flexDirection: 'column' }}>
@@ -51,24 +53,22 @@ export default function OpengraphImage() {
             style={{
               fontSize: 48,
               marginTop: 20,
-              backgroundImage: 'linear-gradient(90deg, #c4b5fd, #67e8f9)',
-              backgroundClip: 'text',
-              color: 'transparent',
+              color: '#0284c7',
             }}
           >
             {personalInfo.title}
           </div>
         </div>
 
-        <div style={{ display: 'flex', gap: 16, fontSize: 26, color: '#d4d4d8' }}>
+        <div style={{ display: 'flex', gap: 16, fontSize: 26, color: '#0f172a' }}>
           {['Spring Boot', 'React', 'Next.js', 'Flutter'].map((t) => (
             <div
               key={t}
               style={{
                 padding: '10px 24px',
-                borderRadius: 999,
-                border: '1px solid rgba(255,255,255,0.15)',
-                background: 'rgba(255,255,255,0.06)',
+                borderRadius: 8,
+                border: '1px solid #cbd2dc',
+                background: 'rgba(255,255,255,0.8)',
               }}
             >
               {t}

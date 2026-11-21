@@ -7,126 +7,174 @@ import Typewriter from '@/components/Typewriter';
 import { ArrowIcon, GithubIcon, MailIcon, WhatsappIcon } from '@/components/Icons';
 
 const stats = [
-  { value: `${projects.length}+`, label: 'Proyectos construidos' },
-  { value: `${techStack.length}`, label: 'Tecnologías que uso' },
-  { value: '100%', label: 'Compromiso y pasión' },
+  { value: `${String(projects.length).padStart(2, '0')}`, label: 'Proyectos' },
+  { value: `${techStack.length}+`, label: 'Tecnologías' },
+  { value: '24h', label: 'Tiempo de respuesta' },
+  { value: '100%', label: 'Compromiso' },
 ];
 
 const process = [
   {
     step: '01',
-    title: 'Entender',
-    text: 'Escucho tu idea, defino objetivos claros y diseño la mejor solución para tu caso.',
+    title: 'Analizar',
+    text: 'Entiendo el problema, defino requisitos claros y diseño la arquitectura adecuada para tu caso.',
   },
   {
     step: '02',
     title: 'Construir',
-    text: 'Desarrollo con código limpio, buenas prácticas, rendimiento y SEO desde el día uno.',
+    text: 'Desarrollo con código limpio y probado, cuidando el rendimiento, la seguridad y el SEO.',
   },
   {
     step: '03',
-    title: 'Lanzar',
-    text: 'Despliego en la nube con dominio propio y sigo mejorando el producto contigo.',
+    title: 'Desplegar',
+    text: 'Publico en la nube con dominio propio, monitoreo el resultado y sigo iterando.',
   },
 ];
 
 export default function Home() {
   const featuredProjects = projects.filter((p) => p.featured);
+  const idRows = [
+    ['NOMBRE', personalInfo.fullName],
+    ['ROL', personalInfo.title],
+    ['EDAD', `${personalInfo.age} años`],
+    ['FORMACIÓN', `${personalInfo.school} · ${personalInfo.cycle}`],
+    ['BASE', personalInfo.location],
+  ];
 
   return (
     <div className="mx-auto max-w-6xl px-6">
       {/* Hero Section */}
-      <section className="relative flex min-h-[78vh] flex-col items-center justify-center pb-16 text-center">
-        <div className="relative mb-8 animate-float">
-          <div className="absolute -inset-1.5 animate-spin-slow rounded-full bg-[conic-gradient(from_0deg,#8b5cf6,#22d3ee,#e879f9,#8b5cf6)] blur-[2px]" />
-          <div className="absolute -inset-8 rounded-full bg-violet-600/30 blur-3xl" />
-          <div className="relative h-32 w-32 overflow-hidden rounded-full ring-4 ring-[#05060b] md:h-36 md:w-36">
-            <Image
-              src={personalInfo.avatar}
-              alt={personalInfo.name}
-              fill
-              className="object-cover"
-              priority
-              sizes="144px"
-            />
+      <section className="grid min-h-[80vh] items-center gap-14 pb-16 lg:grid-cols-[1.25fr_1fr]">
+        <div className="enter">
+          <p className="label flex items-center gap-3">
+            <span className="h-px w-10 bg-accent" />
+            Portafolio · 2026
+          </p>
+
+          <h1 className="mt-6 text-6xl leading-[0.92] font-black tracking-tighter text-ink sm:text-7xl md:text-8xl">
+            Junior
+            <br />
+            <span className="text-gradient">Cueva</span>
+            <span className="text-accent">.</span>
+          </h1>
+
+          <p className="mt-8 h-8 font-mono text-lg text-ink md:text-xl">
+            <span className="text-accent-ink">&gt;</span> <Typewriter words={personalInfo.roles} />
+          </p>
+
+          <p className="mt-6 max-w-xl text-lg leading-relaxed text-steel">
+            Estudiante de {personalInfo.career} en {personalInfo.school}. Construyo sistemas completos: APIs con
+            Java y Spring Boot, interfaces con React y Next.js, y apps móviles con Flutter.
+          </p>
+
+          <div className="mt-10 flex flex-wrap gap-3">
+            <Link
+              href="/projects"
+              className="group inline-flex items-center gap-2 rounded-lg bg-ink px-6 py-3.5 font-semibold text-white shadow-lg shadow-slate-900/20 transition hover:bg-accent-ink"
+            >
+              Ver Proyectos
+              <ArrowIcon className="h-4 w-4 transition-transform group-hover:rotate-45" />
+            </Link>
+            <Link
+              href="/contact"
+              className="inline-flex items-center gap-2 rounded-lg border border-ink/80 bg-white/60 px-6 py-3.5 font-semibold text-ink transition hover:bg-white"
+            >
+              Contáctame
+            </Link>
+          </div>
+
+          <div className="mt-10 flex items-center gap-5 text-steel">
+            <a href={personalInfo.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub" className="transition hover:text-ink">
+              <GithubIcon className="h-5 w-5" />
+            </a>
+            <a href={personalInfo.whatsappUrl} target="_blank" rel="noopener noreferrer" aria-label="WhatsApp (solo mensajes)" className="transition hover:text-emerald-600">
+              <WhatsappIcon className="h-5 w-5" />
+            </a>
+            <a href={`mailto:${personalInfo.email}`} aria-label="Email" className="transition hover:text-ink">
+              <MailIcon className="h-5 w-5" />
+            </a>
+            <span className="h-px flex-1 max-w-24 bg-line" />
+            <span className="font-mono text-xs tracking-widest uppercase">{personalInfo.location}</span>
           </div>
         </div>
 
-        {personalInfo.available && (
-          <span className="glass mb-6 inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-sm text-zinc-200">
-            <span className="relative flex h-2.5 w-2.5">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
-              <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-emerald-400" />
-            </span>
-            Disponible para nuevos proyectos
-          </span>
-        )}
+        {/* Tarjeta de identificación HUD */}
+        <div className="enter" style={{ '--delay': '150ms' } as React.CSSProperties}>
+          <div className="hud hud-on panel relative overflow-hidden rounded-2xl p-6 shadow-2xl shadow-slate-900/10">
+            <div className="flex items-center justify-between font-mono text-[11px] tracking-widest text-steel uppercase">
+              <span>ID · DEV-2026</span>
+              <span className="flex items-center gap-1.5 text-emerald-700">
+                <span className="relative flex h-2 w-2">
+                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-500 opacity-60" />
+                  <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
+                </span>
+                Disponible
+              </span>
+            </div>
 
-        <h1 className="text-5xl font-black tracking-tighter text-white sm:text-7xl md:text-8xl">
-          Hola, soy <span className="text-gradient">{personalInfo.name.split(' ')[0]}</span>
-        </h1>
+            <div className="relative mx-auto mt-6 h-44 w-44">
+              <div className="absolute -inset-3 animate-spin-slow rounded-full border border-dashed border-sky-500/50" />
+              <div className="absolute -inset-1 rounded-full border border-line" />
+              <div className="relative h-full w-full overflow-hidden rounded-full bg-slate-200">
+                <Image
+                  src={personalInfo.avatar}
+                  alt={personalInfo.name}
+                  fill
+                  className="object-cover"
+                  priority
+                  sizes="176px"
+                />
+                <div className="absolute inset-x-0 top-0 h-1/3 animate-scan bg-gradient-to-b from-transparent via-sky-400/30 to-transparent" />
+              </div>
+            </div>
 
-        <p className="mt-6 h-9 text-xl font-medium text-zinc-300 md:text-2xl">
-          <Typewriter words={personalInfo.roles} />
-        </p>
+            <dl className="mt-8 divide-y divide-dashed divide-line border-y border-dashed border-line">
+              {idRows.map(([k, v]) => (
+                <div key={k} className="flex items-center justify-between gap-4 py-2.5">
+                  <dt className="font-mono text-[11px] tracking-widest text-steel">{k}</dt>
+                  <dd className="text-right text-sm font-semibold text-ink">{v}</dd>
+                </div>
+              ))}
+            </dl>
 
-        <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-zinc-400">
-          Tengo {personalInfo.age} años y estoy culminando el {personalInfo.cycle} de {personalInfo.career} en{' '}
-          {personalInfo.school}. Construyo sistemas completos: APIs con Java y Spring Boot, interfaces con React y
-          Next.js, y apps móviles con Flutter.
-        </p>
-
-        <div className="mt-10 flex flex-wrap justify-center gap-4">
-          <Link
-            href="/projects"
-            className="group relative inline-flex items-center gap-2 overflow-hidden rounded-2xl bg-gradient-to-r from-violet-600 to-cyan-500 px-7 py-3.5 font-semibold text-white shadow-xl shadow-violet-600/30 transition hover:scale-[1.03]"
-          >
-            Ver Proyectos
-            <ArrowIcon className="h-4 w-4 transition-transform group-hover:rotate-45" />
-          </Link>
-          <Link
-            href="/contact"
-            className="glass inline-flex items-center gap-2 rounded-2xl px-7 py-3.5 font-semibold text-white transition hover:bg-white/10"
-          >
-            Contáctame
-          </Link>
-        </div>
-
-        <div className="mt-10 flex items-center gap-5 text-zinc-400">
-          <a href={personalInfo.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub" className="transition hover:text-white">
-            <GithubIcon className="h-6 w-6" />
-          </a>
-          <a href={personalInfo.whatsappUrl} target="_blank" rel="noopener noreferrer" aria-label="WhatsApp (solo mensajes)" className="transition hover:text-emerald-400">
-            <WhatsappIcon className="h-6 w-6" />
-          </a>
-          <a href={`mailto:${personalInfo.email}`} aria-label="Email" className="transition hover:text-white">
-            <MailIcon className="h-6 w-6" />
-          </a>
+            <div className="mt-4 flex items-end justify-between">
+              <div className="flex h-8 items-end gap-[3px]" aria-hidden>
+                {[6, 10, 4, 12, 8, 14, 5, 11, 7, 13, 9, 6, 12, 4, 10].map((h, i) => (
+                  <span key={i} className="w-[3px] rounded-full bg-ink/80" style={{ height: `${h * 2}px` }} />
+                ))}
+              </div>
+              <span className="font-mono text-[10px] text-steel">JC/FS/LIM</span>
+            </div>
+          </div>
         </div>
       </section>
 
       {/* Stats */}
       <Reveal>
-        <section className="glass grid grid-cols-1 divide-y divide-white/5 rounded-3xl sm:grid-cols-3 sm:divide-x sm:divide-y-0">
+        <section className="panel grid grid-cols-2 divide-line rounded-2xl md:grid-cols-4 md:divide-x">
           {stats.map((stat) => (
-            <div key={stat.label} className="p-8 text-center">
-              <p className="text-gradient text-5xl font-black tracking-tight">{stat.value}</p>
-              <p className="mt-2 text-sm text-zinc-400">{stat.label}</p>
+            <div key={stat.label} className="p-7">
+              <p className="text-4xl font-black tracking-tighter text-ink md:text-5xl">{stat.value}</p>
+              <p className="mt-2 font-mono text-[11px] tracking-widest text-steel uppercase">{stat.label}</p>
             </div>
           ))}
         </section>
       </Reveal>
 
       {/* Tech marquee */}
-      <section aria-label="Tecnologías" className="relative my-24 overflow-hidden [mask-image:linear-gradient(90deg,transparent,#000_15%,#000_85%,transparent)]">
-        <div className="flex w-max animate-marquee gap-4 hover:[animation-play-state:paused]">
+      <section
+        aria-label="Tecnologías"
+        className="relative my-24 overflow-hidden border-y border-line py-5 [mask-image:linear-gradient(90deg,transparent,#000_12%,#000_88%,transparent)]"
+      >
+        <div className="flex w-max animate-marquee items-center gap-8 hover:[animation-play-state:paused]">
           {[...techStack, ...techStack].map((tech, i) => (
             <span
               key={`${tech}-${i}`}
               aria-hidden={i >= techStack.length}
-              className="glass rounded-2xl px-6 py-3 text-lg font-semibold whitespace-nowrap text-zinc-300"
+              className="flex items-center gap-8 font-mono text-lg whitespace-nowrap text-steel"
             >
               {tech}
+              <span className="h-1.5 w-1.5 rotate-45 bg-accent" />
             </span>
           ))}
         </div>
@@ -136,19 +184,19 @@ export default function Home() {
       <section>
         <Reveal className="mb-12 flex flex-col items-start justify-between gap-4 md:flex-row md:items-end">
           <div>
-            <p className="text-sm font-semibold tracking-widest text-violet-300 uppercase">Portafolio</p>
-            <h2 className="mt-2 text-4xl font-bold tracking-tight text-white md:text-5xl">
+            <p className="label">{'// '}01 — Proyectos</p>
+            <h2 className="mt-3 text-4xl font-black tracking-tighter text-ink md:text-6xl">
               Proyectos Destacados
             </h2>
           </div>
-          <Link href="/projects" className="group inline-flex items-center gap-2 text-zinc-300 hover:text-white">
-            Ver todos <ArrowIcon className="h-4 w-4 transition-transform group-hover:rotate-45" />
+          <Link href="/projects" className="group inline-flex items-center gap-2 font-mono text-sm text-steel hover:text-ink">
+            ver_todos <ArrowIcon className="h-4 w-4 transition-transform group-hover:rotate-45" />
           </Link>
         </Reveal>
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {featuredProjects.map((project, i) => (
             <Reveal key={project.slug} delay={i * 120}>
-              <ProjectCard project={project} />
+              <ProjectCard project={project} index={i} />
             </Reveal>
           ))}
         </div>
@@ -156,21 +204,22 @@ export default function Home() {
 
       {/* Process */}
       <section className="mt-32">
-        <Reveal className="mb-12 text-center">
-          <p className="text-sm font-semibold tracking-widest text-cyan-300 uppercase">Cómo trabajo</p>
-          <h2 className="mt-2 text-4xl font-bold tracking-tight text-white md:text-5xl">
-            De la idea al <span className="text-gradient">lanzamiento</span>
+        <Reveal className="mb-12">
+          <p className="label">{'// '}02 — Proceso</p>
+          <h2 className="mt-3 text-4xl font-black tracking-tighter text-ink md:text-6xl">
+            De la idea al <span className="text-gradient">despliegue</span>
           </h2>
         </Reveal>
-        <div className="grid gap-6 md:grid-cols-3">
+        <div className="grid gap-px overflow-hidden rounded-2xl border border-line bg-line md:grid-cols-3">
           {process.map((item, i) => (
-            <Reveal key={item.step} delay={i * 120}>
-              <div className="glass group h-full rounded-3xl p-8 transition duration-500 hover:-translate-y-1 hover:bg-white/[0.07]">
-                <span className="text-6xl font-black text-white/10 transition group-hover:text-violet-400/40">
-                  {item.step}
-                </span>
-                <h3 className="mt-4 text-2xl font-bold text-white">{item.title}</h3>
-                <p className="mt-3 leading-relaxed text-zinc-400">{item.text}</p>
+            <Reveal key={item.step} delay={i * 120} className="h-full">
+              <div className="group h-full bg-panel p-8 transition-colors duration-500 hover:bg-white">
+                <div className="flex items-center justify-between">
+                  <span className="font-mono text-sm text-accent-ink">[{item.step}]</span>
+                  <span className="h-px w-16 bg-line transition-all duration-500 group-hover:w-24 group-hover:bg-accent" />
+                </div>
+                <h3 className="mt-10 text-3xl font-black tracking-tight text-ink">{item.title}</h3>
+                <p className="mt-3 leading-relaxed text-steel">{item.text}</p>
               </div>
             </Reveal>
           ))}

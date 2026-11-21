@@ -16,8 +16,8 @@ const inter = localFont({
 });
 
 export const viewport: Viewport = {
-  themeColor: '#05060b',
-  colorScheme: 'dark',
+  themeColor: '#eef1f5',
+  colorScheme: 'light',
 };
 
 export const metadata: Metadata = {
@@ -96,7 +96,7 @@ export default function RootLayout({
       <body className="flex min-h-screen flex-col overflow-x-hidden">
         <a
           href="#contenido"
-          className="sr-only z-[60] rounded-lg bg-white px-4 py-2 text-zinc-950 focus:not-sr-only focus:fixed focus:top-4 focus:left-4"
+          className="sr-only z-[60] rounded-lg bg-white px-4 py-2 text-zinc-950 focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:bg-ink focus:text-white"
         >
           Saltar al contenido
         </a>

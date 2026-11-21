@@ -54,7 +54,7 @@ export default function ContactPage() {
       value: personalInfo.email,
       href: `mailto:${personalInfo.email}`,
       icon: MailIcon,
-      color: 'from-violet-500 to-fuchsia-500',
+      color: 'bg-ink',
       copy: true,
     },
     {
@@ -63,7 +63,7 @@ export default function ContactPage() {
       value: personalInfo.whatsapp,
       href: personalInfo.whatsappUrl,
       icon: WhatsappIcon,
-      color: 'from-emerald-500 to-teal-400',
+      color: 'bg-emerald-600',
       copy: false,
     },
     {
@@ -72,7 +72,7 @@ export default function ContactPage() {
       value: personalInfo.github.replace(/^https?:\/\//, ''),
       href: personalInfo.github,
       icon: GithubIcon,
-      color: 'from-zinc-500 to-zinc-700',
+      color: 'bg-slate-600',
       copy: false,
     },
   ];
@@ -93,40 +93,46 @@ export default function ContactPage() {
   return (
     <div className="mx-auto max-w-6xl px-6 py-12">
       {/* Hero */}
-      <div className="enter relative mx-auto max-w-4xl text-center">
-        <span className="glass inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-sm text-zinc-200">
-          <span className="relative flex h-2.5 w-2.5">
-            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
-            <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-emerald-400" />
+      <div className="enter grid gap-10 border-b border-line pb-14 md:grid-cols-[1.5fr_1fr] md:items-end">
+        <div>
+          <p className="label">{'// '}03 — Contacto</p>
+          <h1 className="mt-4 text-6xl font-black tracking-tighter text-ink sm:text-7xl md:text-8xl">
+            Hablemos de tu <span className="text-gradient">próxima idea</span>
+            <span className="text-accent">.</span>
+          </h1>
+        </div>
+        <div>
+          <span className="inline-flex items-center gap-2 rounded-md border border-emerald-600/30 bg-emerald-50 px-3 py-1.5 font-mono text-xs text-emerald-800">
+            <span className="relative flex h-2 w-2">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-500 opacity-60" />
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
+            </span>
+            Respondo en menos de 24 horas
           </span>
-          Respondo en menos de 24 horas
-        </span>
-        <h1 className="mt-8 text-5xl font-black tracking-tighter text-white sm:text-7xl md:text-8xl">
-          Hablemos de tu <span className="text-gradient">próxima idea</span>
-        </h1>
-        <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-zinc-400">
-          ¿Tienes un proyecto, una propuesta de prácticas o simplemente quieres saludar? Escríbeme y
-          construyamos algo increíble juntos.
-        </p>
+          <p className="mt-5 text-lg leading-relaxed text-steel">
+            ¿Tienes un proyecto, una propuesta de prácticas o simplemente quieres saludar? Escríbeme y
+            construyamos algo increíble juntos.
+          </p>
+        </div>
       </div>
 
-      <div className="mt-20 grid gap-6 lg:grid-cols-5">
+      <div className="mt-14 grid gap-6 lg:grid-cols-5">
         {/* Canales de contacto */}
         <div className="space-y-4 lg:col-span-2">
           {channels.map((channel, i) => {
             const Icon = channel.icon;
             return (
               <Reveal key={channel.name} delay={i * 100}>
-                <Spotlight className="rounded-3xl">
-                  <div className="glass group relative flex items-center gap-4 rounded-3xl p-5 transition duration-500 hover:-translate-y-1 hover:bg-white/[0.07]">
-                    <span className={`grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-gradient-to-br ${channel.color} text-white shadow-lg`}>
+                <Spotlight className="hud rounded-2xl">
+                  <div className="panel group relative flex items-center gap-4 rounded-2xl p-5 transition duration-500 hover:-translate-y-1 hover:border-sky-400/60">
+                    <span className={`grid h-12 w-12 shrink-0 place-items-center rounded-xl ${channel.color} text-white`}>
                       <Icon className="h-6 w-6" />
                     </span>
                     <div className="min-w-0 flex-1">
-                      <p className="flex items-center gap-2 text-xs font-semibold tracking-widest text-zinc-500 uppercase">
+                      <p className="flex items-center gap-2 font-mono text-[11px] tracking-widest text-steel uppercase">
                         {channel.name}
                         {channel.note && (
-                          <span className="rounded-full bg-emerald-400/10 px-2 py-0.5 text-[10px] tracking-normal text-emerald-300 normal-case ring-1 ring-emerald-400/20">
+                          <span className="rounded bg-emerald-50 px-1.5 py-0.5 text-[10px] tracking-normal text-emerald-800 normal-case ring-1 ring-emerald-600/25">
                             {channel.note}
                           </span>
                         )}
@@ -135,7 +141,7 @@ export default function ContactPage() {
                         href={channel.href}
                         target={channel.href.startsWith('http') ? '_blank' : undefined}
                         rel={channel.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                        className="block truncate font-semibold text-white after:absolute after:inset-0 after:rounded-3xl"
+                        className="mt-0.5 block truncate font-semibold text-ink after:absolute after:inset-0 after:rounded-2xl"
                       >
                         {channel.value}
                       </a>
@@ -143,7 +149,7 @@ export default function ContactPage() {
                     {channel.copy ? (
                       <CopyButton value={channel.value} label={`Copiar ${channel.name}`} />
                     ) : (
-                      <ArrowIcon className="h-5 w-5 text-zinc-500 transition-transform duration-300 group-hover:rotate-45 group-hover:text-white" />
+                      <ArrowIcon className="h-5 w-5 text-steel transition-transform duration-300 group-hover:rotate-45 group-hover:text-accent" />
                     )}
                   </div>
                 </Spotlight>
@@ -151,17 +157,17 @@ export default function ContactPage() {
             );
           })}
 
-          <Reveal delay={400}>
-            <div className="grid grid-cols-2 gap-4">
-              <div className="glass rounded-3xl p-5">
-                <PinIcon className="h-6 w-6 text-cyan-300" />
-                <p className="mt-3 text-xs font-semibold tracking-widest text-zinc-500 uppercase">Ubicación</p>
-                <p className="mt-1 font-semibold text-white">{personalInfo.location}</p>
+          <Reveal delay={300}>
+            <div className="grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-line bg-line">
+              <div className="bg-panel p-5">
+                <PinIcon className="h-5 w-5 text-accent" />
+                <p className="mt-3 font-mono text-[11px] tracking-widest text-steel uppercase">Ubicación</p>
+                <p className="mt-1 font-semibold text-ink">{personalInfo.location}</p>
               </div>
-              <div className="glass rounded-3xl p-5">
-                <ClockIcon className="h-6 w-6 text-violet-300" />
-                <p className="mt-3 text-xs font-semibold tracking-widest text-zinc-500 uppercase">Horario</p>
-                <p className="mt-1 font-semibold text-white">Lun – Sáb, GMT-5</p>
+              <div className="bg-panel p-5">
+                <ClockIcon className="h-5 w-5 text-accent" />
+                <p className="mt-3 font-mono text-[11px] tracking-widest text-steel uppercase">Horario</p>
+                <p className="mt-1 font-semibold text-ink">Lun – Sáb · GMT-5</p>
               </div>
             </div>
           </Reveal>
@@ -169,35 +175,45 @@ export default function ContactPage() {
 
         {/* Formulario */}
         <Reveal delay={150} className="lg:col-span-3">
-          <div className="gradient-border glass relative h-full overflow-hidden rounded-3xl p-6 md:p-10">
-            <div aria-hidden className="absolute -top-24 -right-24 h-64 w-64 rounded-full bg-violet-600/30 blur-3xl" />
-            <div aria-hidden className="absolute -bottom-24 -left-24 h-64 w-64 rounded-full bg-cyan-500/20 blur-3xl" />
-            <div className="relative">
-              <h2 className="text-3xl font-bold text-white">Envíame un mensaje</h2>
-              <p className="mt-2 mb-8 text-zinc-400">Completa el formulario y te responderé lo antes posible.</p>
-              <ContactForm email={personalInfo.email} />
+          <div className="hud hud-on panel relative h-full overflow-hidden rounded-2xl p-6 shadow-2xl shadow-slate-900/10 md:p-10">
+            <div className="flex items-center justify-between border-b border-dashed border-line pb-5">
+              <div>
+                <p className="label">{'// '}Formulario</p>
+                <h2 className="mt-2 text-3xl font-black tracking-tight text-ink">Envíame un mensaje</h2>
+              </div>
+              <span className="hidden gap-1.5 sm:flex" aria-hidden>
+                <span className="h-2.5 w-2.5 rounded-full bg-slate-300" />
+                <span className="h-2.5 w-2.5 rounded-full bg-slate-300" />
+                <span className="h-2.5 w-2.5 rounded-full bg-accent" />
+              </span>
             </div>
+            <p className="mt-5 mb-8 text-steel">Completa el formulario y te responderé lo antes posible.</p>
+            <ContactForm email={personalInfo.email} />
           </div>
         </Reveal>
       </div>
 
       {/* Preguntas frecuentes */}
-      <section className="mx-auto mt-28 max-w-3xl">
-        <Reveal className="mb-10 text-center">
-          <p className="text-sm font-semibold tracking-widest text-cyan-300 uppercase">FAQ</p>
-          <h2 className="mt-2 text-4xl font-bold tracking-tight text-white">Preguntas frecuentes</h2>
+      <section className="mt-28 grid gap-10 md:grid-cols-[1fr_1.6fr]">
+        <Reveal>
+          <p className="label">{'// '}FAQ</p>
+          <h2 className="mt-3 text-4xl font-black tracking-tighter text-ink md:text-5xl">Preguntas frecuentes</h2>
+          <p className="mt-4 text-steel">Lo que más me preguntan antes de empezar un proyecto.</p>
         </Reveal>
-        <div className="space-y-3">
+        <div className="divide-y divide-line border-y border-line">
           {faqs.map((faq, i) => (
             <Reveal key={faq.q} delay={i * 100}>
-              <details className="glass group rounded-2xl p-6 [&_summary::-webkit-details-marker]:hidden">
-                <summary className="flex cursor-pointer list-none items-center justify-between gap-4 text-lg font-semibold text-white">
-                  {faq.q}
-                  <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-white/5 text-xl text-zinc-300 transition-transform duration-300 group-open:rotate-45">
+              <details className="group py-6 [&_summary::-webkit-details-marker]:hidden">
+                <summary className="flex cursor-pointer list-none items-center justify-between gap-4 text-lg font-bold text-ink">
+                  <span className="flex items-baseline gap-4">
+                    <span className="font-mono text-xs text-accent-ink">0{i + 1}</span>
+                    {faq.q}
+                  </span>
+                  <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full border border-line text-xl text-steel transition duration-300 group-open:rotate-45 group-open:border-accent group-open:bg-accent group-open:text-white">
                     +
                   </span>
                 </summary>
-                <p className="mt-4 leading-relaxed text-zinc-400">{faq.a}</p>
+                <p className="mt-4 pl-9 leading-relaxed text-steel">{faq.a}</p>
               </details>
             </Reveal>
           ))}
