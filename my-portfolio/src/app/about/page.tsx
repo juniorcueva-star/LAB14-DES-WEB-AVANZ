@@ -61,10 +61,9 @@ export default function AboutPage() {
                 disfruta construir sistemas completos, desde la base de datos hasta la última animación.
               </p>
               <p>
-                He desarrollado un <span className="text-white">ERP para una ferretería</span> con Spring Boot y
-                React, una <span className="text-white">app móvil de reservas</span> con Flutter y Supabase,
-                arquitecturas de <span className="text-white">microservicios</span> con Spring Cloud y un
-                marketplace de moda con IA como proyecto integrador.
+                He desarrollado <span className="text-white">sistemas web completos</span> con Spring Boot y
+                React, <span className="text-white">apps móviles</span> con Flutter y Firebase, arquitecturas de{' '}
+                <span className="text-white">microservicios</span> con Spring Cloud y dashboards con Next.js.
               </p>
               <p>
                 Me importa el código limpio y probado: escribo pruebas con JUnit, Mockito y Playwright, y despliego
