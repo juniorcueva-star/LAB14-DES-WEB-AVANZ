@@ -15,8 +15,8 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   const facts = [
     personalInfo.age ? { label: 'Edad', value: `${personalInfo.age} años` } : null,
-    { label: 'Estudio', value: personalInfo.career },
-    { label: 'Instituto', value: personalInfo.school },
+    { label: 'Carrera', value: personalInfo.career },
+    { label: 'Instituto', value: `${personalInfo.school} · ${personalInfo.cycle}` },
     { label: 'Ubicación', value: personalInfo.location },
   ].filter((f): f is { label: string; value: string } => f !== null);
 
@@ -55,18 +55,20 @@ export default function AboutPage() {
           <div className="glass h-full rounded-3xl p-8">
             <div className="space-y-4 text-lg leading-relaxed text-zinc-300">
               <p>
-                Soy un desarrollador full stack apasionado por crear experiencias web excepcionales. Estudio{' '}
+                Tengo {personalInfo.age} años, vivo en Lima y estoy culminando el {personalInfo.cycle} de{' '}
                 <span className="text-white">{personalInfo.career}</span> en{' '}
-                <span className="text-white">{personalInfo.school}</span> y me especializo en construir
-                aplicaciones modernas y escalables.
+                <span className="text-white">{personalInfo.school}</span>. Soy un desarrollador full stack que
+                disfruta construir sistemas completos, desde la base de datos hasta la última animación.
               </p>
               <p>
-                Mi enfoque está en escribir código limpio, mantenible y eficiente, siempre buscando las mejores
-                prácticas y las últimas tecnologías para entregar productos de alta calidad.
+                He desarrollado un <span className="text-white">ERP para una ferretería</span> con Spring Boot y
+                React, una <span className="text-white">app móvil de reservas</span> con Flutter y Supabase,
+                arquitecturas de <span className="text-white">microservicios</span> con Spring Cloud y un
+                marketplace de moda con IA como proyecto integrador.
               </p>
               <p>
-                Cuando no estoy programando, me gusta contribuir a proyectos de código abierto, escribir
-                artículos técnicos y aprender nuevas tecnologías.
+                Me importa el código limpio y probado: escribo pruebas con JUnit, Mockito y Playwright, y despliego
+                con Docker y en la nube. Siempre estoy aprendiendo algo nuevo.
               </p>
             </div>
           </div>
@@ -90,7 +92,7 @@ export default function AboutPage() {
           <p className="text-sm font-semibold tracking-widest text-cyan-300 uppercase">Stack</p>
           <h2 className="mt-2 text-4xl font-bold tracking-tight text-white md:text-5xl">Habilidades Técnicas</h2>
         </Reveal>
-        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {skillGroups.map((group, i) => (
             <Reveal key={group.title} delay={i * 100}>
               <Spotlight className="h-full rounded-3xl">

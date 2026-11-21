@@ -39,7 +39,7 @@ const faqs = [
   },
   {
     q: '¿Qué tipo de proyectos aceptas?',
-    a: 'Sitios web, landing pages, portafolios, aplicaciones con Next.js/React y APIs con Node.js. También estoy abierto a prácticas preprofesionales.',
+    a: 'Sistemas web completos (Spring Boot + React), sitios con Next.js, APIs REST, apps móviles con Flutter y landing pages. También estoy abierto a prácticas preprofesionales.',
   },
   {
     q: '¿Trabajas de forma remota?',

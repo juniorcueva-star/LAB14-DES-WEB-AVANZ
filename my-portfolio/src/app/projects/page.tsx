@@ -24,8 +24,8 @@ export default function ProjectsPage() {
           Mis <span className="text-gradient">Proyectos</span>
         </h1>
         <p className="mt-6 text-lg leading-relaxed text-zinc-400">
-          Una colección de proyectos en los que he trabajado: desde tiendas en línea hasta aplicaciones en
-          tiempo real. Cada uno es una oportunidad para aprender algo nuevo.
+          Una colección de proyectos en los que he trabajado: sistemas empresariales, apps móviles,
+          microservicios y aplicaciones web. Cada uno es una oportunidad para aprender algo nuevo.
         </p>
       </div>
 

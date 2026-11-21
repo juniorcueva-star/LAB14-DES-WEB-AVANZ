@@ -71,8 +71,9 @@ export default function Home() {
         </p>
 
         <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-zinc-400">
-          {personalInfo.description}. Estudiante de {personalInfo.career} en {personalInfo.school}, convierto
-          ideas en productos web rápidos, accesibles y optimizados para buscadores.
+          Tengo {personalInfo.age} años y estoy culminando el {personalInfo.cycle} de {personalInfo.career} en{' '}
+          {personalInfo.school}. Construyo sistemas completos: APIs con Java y Spring Boot, interfaces con React y
+          Next.js, y apps móviles con Flutter.
         </p>
 
         <div className="mt-10 flex flex-wrap justify-center gap-4">

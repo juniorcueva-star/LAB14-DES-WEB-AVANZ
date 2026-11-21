@@ -61,7 +61,7 @@ export default function OpengraphImage() {
         </div>
 
         <div style={{ display: 'flex', gap: 16, fontSize: 26, color: '#d4d4d8' }}>
-          {['Next.js', 'React', 'TypeScript', 'Node.js'].map((t) => (
+          {['Spring Boot', 'React', 'Next.js', 'Flutter'].map((t) => (
             <div
               key={t}
               style={{
