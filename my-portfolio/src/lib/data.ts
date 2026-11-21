@@ -172,7 +172,7 @@ export const projects: Project[] = [
 ];
 
 // URL pública del sitio. En Vercel se define NEXT_PUBLIC_SITE_URL con el dominio propio.
-const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL ?? 'https://juniorcueva.vercel.app').replace(/\/$/, '');
+const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL ?? 'https://juniorcueva.dpdns.org').replace(/\/$/, '');
 
 export const personalInfo = {
   name: 'Junior Cueva',
