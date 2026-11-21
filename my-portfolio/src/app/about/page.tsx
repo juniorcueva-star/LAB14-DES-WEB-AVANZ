@@ -121,7 +121,6 @@ export default function AboutPage() {
 
       <Reveal className="mt-28">
         <div className="relative overflow-hidden rounded-2xl bg-ink p-10 text-white md:p-16">
-          <div aria-hidden className="grid-bg absolute inset-0 opacity-20 invert" />
           <div aria-hidden className="absolute -top-24 -right-24 h-72 w-72 rounded-full bg-sky-500/30 blur-3xl" />
           <div className="relative">
             <p className="font-mono text-xs tracking-[0.2em] text-sky-300 uppercase">{'// '}Disponible</p>

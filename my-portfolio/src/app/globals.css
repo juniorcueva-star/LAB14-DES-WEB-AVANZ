@@ -158,15 +158,15 @@ body {
   opacity: 1;
 }
 
-/* Cuadrícula técnica de fondo */
-.grid-bg {
-  background-image:
-    linear-gradient(rgb(15 23 42 / 0.06) 1px, transparent 1px),
-    linear-gradient(90deg, rgb(15 23 42 / 0.06) 1px, transparent 1px),
-    linear-gradient(rgb(15 23 42 / 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgb(15 23 42 / 0.03) 1px, transparent 1px);
-  background-size: 96px 96px, 96px 96px, 24px 24px, 24px 24px;
-  mask-image: radial-gradient(ellipse 90% 70% at 50% 0%, #000 35%, transparent 100%);
+/* Nodos del circuito que se encienden */
+.circuit-pulse {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: circuit-pulse 4s ease-in-out infinite;
+}
+@keyframes circuit-pulse {
+  0%, 100% { opacity: 0.15; transform: scale(0.6); }
+  50% { opacity: 1; transform: scale(1.4); }
 }
 
 /* Aparición al hacer scroll */
