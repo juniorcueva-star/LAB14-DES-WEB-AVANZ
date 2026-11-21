@@ -1,8 +1,9 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import localFont from 'next/font/local';
 import './globals.css';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import Background from '@/components/Background';
 import { personalInfo } from '@/lib/data';
 
 // Inter autoalojada desde npm (@fontsource-variable/inter) porque la red
@@ -13,6 +14,11 @@ const inter = localFont({
   display: 'swap',
   variable: '--font-inter',
 });
+
+export const viewport: Viewport = {
+  themeColor: '#05060b',
+  colorScheme: 'dark',
+};
 
 export const metadata: Metadata = {
   metadataBase: new URL(personalInfo.siteUrl),
@@ -28,9 +34,14 @@ export const metadata: Metadata = {
     'react',
     'typescript',
     'portafolio',
+    'tecsup',
+    'perú',
   ],
-  authors: [{ name: personalInfo.name }],
-  creator: personalInfo.name,
+  authors: [{ name: personalInfo.fullName, url: personalInfo.siteUrl }],
+  creator: personalInfo.fullName,
+  alternates: {
+    canonical: '/',
+  },
   openGraph: {
     type: 'website',
     locale: 'es_ES',
@@ -38,20 +49,11 @@ export const metadata: Metadata = {
     title: `${personalInfo.name} - ${personalInfo.title}`,
     description: personalInfo.description,
     siteName: personalInfo.name,
-    images: [
-      {
-        url: '/og-image.jpg',
-        width: 1200,
-        height: 630,
-        alt: `${personalInfo.name} - Portafolio`,
-      },
-    ],
   },
   twitter: {
     card: 'summary_large_image',
     title: `${personalInfo.name} - ${personalInfo.title}`,
     description: personalInfo.description,
-    images: ['/og-image.jpg'],
     creator: '@tuusuario',
   },
   robots: {
@@ -70,6 +72,19 @@ export const metadata: Metadata = {
   },
 };
 
+// Datos estructurados (JSON-LD) para que Google entienda quién es el autor.
+const personJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: personalInfo.fullName,
+  jobTitle: personalInfo.title,
+  url: personalInfo.siteUrl,
+  image: `${personalInfo.siteUrl}${personalInfo.avatar}`,
+  sameAs: [personalInfo.github, personalInfo.linkedin],
+  alumniOf: { '@type': 'EducationalOrganization', name: personalInfo.school },
+  address: { '@type': 'PostalAddress', addressLocality: 'Lima', addressCountry: 'PE' },
+};
+
 export default function RootLayout({
   children,
 }: {
@@ -77,10 +92,23 @@ export default function RootLayout({
 }) {
   return (
     <html lang="es" className={inter.variable}>
-      <body className="flex flex-col min-h-screen">
+      <body className="flex min-h-screen flex-col overflow-x-hidden">
+        <a
+          href="#contenido"
+          className="sr-only z-[60] rounded-lg bg-white px-4 py-2 text-zinc-950 focus:not-sr-only focus:fixed focus:top-4 focus:left-4"
+        >
+          Saltar al contenido
+        </a>
+        <Background />
         <Header />
-        <main className="grow bg-gray-50">{children}</main>
+        <main id="contenido" className="grow pt-28">
+          {children}
+        </main>
         <Footer />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
+        />
       </body>
     </html>
   );
