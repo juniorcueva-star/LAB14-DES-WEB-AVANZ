@@ -4,7 +4,7 @@ import { projects, personalInfo, techStack } from '@/lib/data';
 import ProjectCard from '@/components/ProjectCard';
 import Reveal from '@/components/Reveal';
 import Typewriter from '@/components/Typewriter';
-import { ArrowIcon, GithubIcon, LinkedinIcon, MailIcon } from '@/components/Icons';
+import { ArrowIcon, GithubIcon, MailIcon, WhatsappIcon } from '@/components/Icons';
 
 const stats = [
   { value: `${projects.length}+`, label: 'Proyectos construidos' },
@@ -96,8 +96,8 @@ export default function Home() {
           <a href={personalInfo.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub" className="transition hover:text-white">
             <GithubIcon className="h-6 w-6" />
           </a>
-          <a href={personalInfo.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="transition hover:text-white">
-            <LinkedinIcon className="h-6 w-6" />
+          <a href={personalInfo.whatsappUrl} target="_blank" rel="noopener noreferrer" aria-label="WhatsApp (solo mensajes)" className="transition hover:text-emerald-400">
+            <WhatsappIcon className="h-6 w-6" />
           </a>
           <a href={`mailto:${personalInfo.email}`} aria-label="Email" className="transition hover:text-white">
             <MailIcon className="h-6 w-6" />

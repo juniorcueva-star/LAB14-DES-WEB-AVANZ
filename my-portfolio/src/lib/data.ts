@@ -95,10 +95,11 @@ export const personalInfo = {
   school: 'Tecsup',
   location: 'Lima, Perú',
   available: true,
-  email: 'tu@email.com',
-  whatsapp: '',
+  email: 'junior777fabian@gmail.com',
+  // WhatsApp solo para mensajes (no llamadas)
+  whatsapp: '+51 940 571 350',
+  whatsappUrl: 'https://wa.me/51940571350?text=Hola%20Junior%2C%20vi%20tu%20portafolio%20y%20me%20gustar%C3%ADa%20conversar.',
   github: 'https://github.com/juniorcueva-star',
-  linkedin: 'https://linkedin.com/in/tuusuario',
   siteUrl,
   avatar: '/avatar.png',
 };

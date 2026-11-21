@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { personalInfo } from '@/lib/data';
-import { ArrowIcon, GithubIcon, LinkedinIcon, MailIcon } from '@/components/Icons';
+import { ArrowIcon, GithubIcon, MailIcon, WhatsappIcon } from '@/components/Icons';
 
 export default function Footer() {
   return (
@@ -31,13 +31,13 @@ export default function Footer() {
               <GithubIcon />
             </a>
             <a
-              href={personalInfo.linkedin}
+              href={personalInfo.whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="LinkedIn"
-              className="glass grid h-12 w-12 place-items-center rounded-2xl text-zinc-300 transition hover:-translate-y-1 hover:text-white"
+              aria-label="WhatsApp (solo mensajes)"
+              className="glass grid h-12 w-12 place-items-center rounded-2xl text-zinc-300 transition hover:-translate-y-1 hover:text-emerald-400"
             >
-              <LinkedinIcon />
+              <WhatsappIcon />
             </a>
             <a
               href={`mailto:${personalInfo.email}`}

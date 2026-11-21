@@ -8,7 +8,6 @@ import {
   ArrowIcon,
   ClockIcon,
   GithubIcon,
-  LinkedinIcon,
   MailIcon,
   PinIcon,
   WhatsappIcon,
@@ -35,7 +34,7 @@ export const metadata: Metadata = {
 const faqs = [
   {
     q: '¿En cuánto tiempo respondes?',
-    a: 'Normalmente en menos de 24 horas. Si es algo urgente, escríbeme por WhatsApp o LinkedIn.',
+    a: 'Normalmente en menos de 24 horas. Si es algo urgente, escríbeme por WhatsApp (solo mensajes, no atiendo llamadas).',
   },
   {
     q: '¿Qué tipo de proyectos aceptas?',
@@ -51,39 +50,32 @@ export default function ContactPage() {
   const channels = [
     {
       name: 'Email',
+      note: '',
       value: personalInfo.email,
       href: `mailto:${personalInfo.email}`,
       icon: MailIcon,
       color: 'from-violet-500 to-fuchsia-500',
       copy: true,
     },
-    personalInfo.whatsapp
-      ? {
-          name: 'WhatsApp',
-          value: personalInfo.whatsapp,
-          href: `https://wa.me/${personalInfo.whatsapp.replace(/\D/g, '')}`,
-          icon: WhatsappIcon,
-          color: 'from-emerald-500 to-teal-400',
-          copy: false,
-        }
-      : null,
     {
-      name: 'LinkedIn',
-      value: personalInfo.linkedin.replace(/^https?:\/\/(www\.)?/, ''),
-      href: personalInfo.linkedin,
-      icon: LinkedinIcon,
-      color: 'from-sky-500 to-blue-600',
+      name: 'WhatsApp',
+      note: 'Solo mensajes',
+      value: personalInfo.whatsapp,
+      href: personalInfo.whatsappUrl,
+      icon: WhatsappIcon,
+      color: 'from-emerald-500 to-teal-400',
       copy: false,
     },
     {
       name: 'GitHub',
+      note: '',
       value: personalInfo.github.replace(/^https?:\/\//, ''),
       href: personalInfo.github,
       icon: GithubIcon,
       color: 'from-zinc-500 to-zinc-700',
       copy: false,
     },
-  ].filter((c) => c !== null);
+  ];
 
   const contactJsonLd = {
     '@context': 'https://schema.org',
@@ -131,7 +123,14 @@ export default function ContactPage() {
                       <Icon className="h-6 w-6" />
                     </span>
                     <div className="min-w-0 flex-1">
-                      <p className="text-xs font-semibold tracking-widest text-zinc-500 uppercase">{channel.name}</p>
+                      <p className="flex items-center gap-2 text-xs font-semibold tracking-widest text-zinc-500 uppercase">
+                        {channel.name}
+                        {channel.note && (
+                          <span className="rounded-full bg-emerald-400/10 px-2 py-0.5 text-[10px] tracking-normal text-emerald-300 normal-case ring-1 ring-emerald-400/20">
+                            {channel.note}
+                          </span>
+                        )}
+                      </p>
                       <a
                         href={channel.href}
                         target={channel.href.startsWith('http') ? '_blank' : undefined}

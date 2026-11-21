@@ -80,7 +80,8 @@ const personJsonLd = {
   jobTitle: personalInfo.title,
   url: personalInfo.siteUrl,
   image: `${personalInfo.siteUrl}${personalInfo.avatar}`,
-  sameAs: [personalInfo.github, personalInfo.linkedin],
+  email: `mailto:${personalInfo.email}`,
+  sameAs: [personalInfo.github],
   alumniOf: { '@type': 'EducationalOrganization', name: personalInfo.school },
   address: { '@type': 'PostalAddress', addressLocality: 'Lima', addressCountry: 'PE' },
 };
